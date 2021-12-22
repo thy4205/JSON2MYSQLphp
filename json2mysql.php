@@ -10,6 +10,7 @@
 	
 	$tableName = $json['tablename'];
 	$datatype = $json['datatype'];
+	$trueRowCount = count($json['rows']);
 	
 	$sql = [];
 	
@@ -45,7 +46,7 @@
 			foreach ($row as $key=>$value){
 				$value = str_replace('\r\n','#_NEWLINE_#',$value);
 				$value = mysqli_real_escape_string($link,($value));
-				 $value = str_replace('#_NEWLINE_#','\r\n',$value);
+				$value = str_replace('#_NEWLINE_#','\r\n',$value);
 				
 				if ( $value ==null  )
 				{
@@ -56,8 +57,8 @@
 					}
 				}
 				else 
-				if ($value ===true || $value===false){
-					$query.= (int)$value.', ';
+				if ($datatype[$i]=="bit"){
+					$query.= ($value===true?1:0).', ';
 				}
 				else
 				
@@ -82,8 +83,9 @@
 		$query = substr($query,0,-1); //remove Last comma
 		$sql[] = mysqli_query($link,$query);
 		if (end($sql)==true){
+			$rowCount++
+			print ($rowCount*$numberOfChunkInEachQuery) .'/'.$trueRowCount .'  '. round(($rowCount*$numberOfChunkInEachQuery)/$trueRowCount*100,2)."% \r\n";
 			
-			print $query;
 			} else {
 			print mysqli_error($link);
 			
