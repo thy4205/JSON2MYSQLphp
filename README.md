@@ -1,7 +1,7 @@
-# JSON2MYSQL
-JSON2MYSQL is a simple PHP script that creates Insert statments that inserts JSON data into a pre-made MySQL table with the help of the MySQLi plugin.
+# JSON2MYSQLphp
+JSON2MYSQLphp, (formally just JSON2MYSQL) is a simple PHP script that creates Insert statments that inserts JSON data into a pre-made MySQL table with the help of the MySQLi plugin. A new version was written in python to elimiate the use of PHP and hopefully improve the effiency of the import process.
 
-JSON2MYSQL does NOT create the `create table`. The functionality might get implemented but it is unlikely to be my pirorty at the memoment.
+JSON2MYSQLphp does NOT create the `create table`. The functionality might get implemented but it is unlikely to be my pirorty at the memoment.
 
 The script is designed for working alongside MSSQL2JSON. While it would work for any other JSON file with the correct format, there is no reason to do so. 
 
@@ -21,5 +21,5 @@ The script is designed for working alongside MSSQL2JSON. While it would work for
   * Database Table Name
   * User Name
   * Password
-1. Run the script in Command Prompt/bash with `php json2mysql.php`  
+1. Run the script in Command Prompt/bash with `php JSON2MYSQLphp.php`  
 
